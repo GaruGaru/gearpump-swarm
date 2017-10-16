@@ -13,6 +13,7 @@ services:
       - "8090:8090"
 
   gearpump-master:
+    hostname: gearpump-master
     build: .
     entrypoint: ./entrypoint.sh
     command: bin/master -ip gearpump-master -port 3000
