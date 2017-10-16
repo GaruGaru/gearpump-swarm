@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  gearpump-master:
+    container_name: gearpump-master 
+    build: .
+    entrypoint: /entrypoint.sh
+    command: tail -f /dev/null
+    environment:
+        - MASTERS=["gearpump-master:3000"]
+        - HOSTNAME=gearpump-master
