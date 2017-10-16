@@ -17,6 +17,7 @@ COPY gear.conf gearpump_2.11-0.8.4-incubating/conf/
 
 WORKDIR gearpump_2.11-0.8.4-incubating
 
+RUN chmod +x bin/*
 RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ./entrypoint.sh

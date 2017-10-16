@@ -1,11 +1,37 @@
 version: '2'
 
 services:
-  gearpump-master:
-    container_name: gearpump-master 
+
+  gearpump-ui:
     build: .
     entrypoint: /entrypoint.sh
-    command: tail -f /dev/null
+    command: bin/services
     environment:
         - MASTERS=["gearpump-master:3000"]
         - HOSTNAME=gearpump-master
+    deploy:
+      mode: replicated
+      replicas: 1
+
+  gearpump-master:
+    build: .
+    entrypoint: /entrypoint.sh
+    command: bin/master -ip gearpump-master -port 3000
+    environment:
+        - MASTERS=["gearpump-master:3000"]
+        - HOSTNAME=gearpump-master
+    deploy:
+      mode: replicated
+      replicas: 1
+
+  gearpump-worker:
+    hostname: gearpump-worker-{{.Node}}
+    build: .
+    entrypoint: /entrypoint.sh
+    command: bin/worker 
+    environment:
+        - MASTERS=["gearpump-master:3000"]
+        - HOSTNAME=gearpump-master
+    deploy:
+      mode: replicated
+      replicas: 4
