@@ -9,6 +9,8 @@ services:
     environment:
         - MASTERS=["gearpump-master:3000"]
         - HOSTNAME=gearpump-master
+    ports:
+      - "8090:8090"
     deploy:
       mode: replicated
       replicas: 1
@@ -20,6 +22,8 @@ services:
     environment:
         - MASTERS=["gearpump-master:3000"]
         - HOSTNAME=gearpump-master
+    expose:
+      - 3000
     deploy:
       mode: replicated
       replicas: 1
@@ -29,6 +33,8 @@ services:
     build: .
     entrypoint: /entrypoint.sh
     command: bin/worker 
+    expose:
+      - 3000
     environment:
         - MASTERS=["gearpump-master:3000"]
         - HOSTNAME=gearpump-master
