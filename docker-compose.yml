@@ -4,6 +4,7 @@ services:
 
   gearpump-ui:
     build: .
+    entrypoint: ./entrypoint.sh
     command: bin/services
     environment:
         - MASTERS=["gearpump-master:3000"]
@@ -13,6 +14,7 @@ services:
 
   gearpump-master:
     build: .
+    entrypoint: ./entrypoint.sh
     command: bin/master -ip gearpump-master -port 3000
     environment:
         - MASTERS=["gearpump-master:3000"]
@@ -20,6 +22,7 @@ services:
 
   gearpump-worker:
     hostname: gearpump-worker-{{.Node}}
+    entrypoint: ./entrypoint.sh
     build: .
     command: bin/worker 
     environment:
