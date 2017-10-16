@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#! /bin/sh -
 
 sed -i -e 's/{{MASTERS}}/'"$MASTERS"'/g' gearpump_2.11-0.8.4-incubating/conf/gear.conf
 

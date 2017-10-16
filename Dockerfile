@@ -11,7 +11,7 @@ RUN curl --location --retry 3 --insecure https://dist.apache.org/repos/dist/rele
 
 RUN tar -xvzf gearpump.tgz
 
-COPY entrypoint.sh  /entrypoint.sh
+COPY entrypoint.sh  gearpump_2.11-0.8.4-incubating/
 RUN chmod +x entrypoint.sh
 
 COPY gear.conf gearpump_2.11-0.8.4-incubating/conf/
