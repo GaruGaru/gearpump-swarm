@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
 
@@ -10,9 +10,6 @@ services:
         - HOSTNAME=gearpump-master
     ports:
       - "8090:8090"
-    deploy:
-      mode: replicated
-      replicas: 1
 
   gearpump-master:
     build: .
@@ -20,21 +17,11 @@ services:
     environment:
         - MASTERS=["gearpump-master:3000"]
         - HOSTNAME=gearpump-master
-    expose:
-      - 3000
-    deploy:
-      mode: replicated
-      replicas: 1
 
   gearpump-worker:
     hostname: gearpump-worker-{{.Node}}
     build: .
     command: bin/worker 
-    expose:
-      - 3000
     environment:
         - MASTERS=["gearpump-master:3000"]
         - HOSTNAME=gearpump-master
-    deploy:
-      mode: replicated
-      replicas: 4
