@@ -4,15 +4,18 @@ services:
 
   gearpump-master:
     hostname: gearpump-master
-    image: garugaru/gearpump:9322e1e
+    image: garugaru/gearpump:b1880f4
     entrypoint: ./entrypoint.sh
     command: ./bin/master -ip gearpump-master -port 3000
     environment:
         - MASTERS=["gearpump-master:3000"]
         - HOSTNAME=gearpump-master    
+    deploy:
+        mode: replicated
+        replicas: 1
 
   gearpump-ui:
-    image: garugaru/gearpump:9322e1e
+    image: garugaru/gearpump:b1880f4
     entrypoint: ./entrypoint.sh
     command: ./bin/services
     environment:
@@ -21,16 +24,21 @@ services:
       - "8090:8090"
     depends_on:
         - gearpump-master
+    deploy:
+        mode: replicated
+        replicas: 1
 
   gearpump-worker:
     hostname: "{{.Node.Hostname}}"
     entrypoint: ./entrypoint.sh
-    image: garugaru/gearpump:9322e1e
+    image: garugaru/gearpump:b1880f4
     command: ./bin/worker 
     environment:
         - MASTERS=["gearpump-master:3000"] 
     depends_on:
         - gearpump-master
         - gearpump-ui
-
+    deploy:
+        mode: replicated
+        replicas: 3
  
