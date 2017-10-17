@@ -19,6 +19,8 @@ WORKDIR gearpump_2.11-0.8.4-incubating
 RUN chmod +x bin/*
 RUN chmod +x entrypoint.sh
 
+RUN mkdir applications
+
 ENTRYPOINT ./entrypoint.sh
 
 CMD tail -f /dev/null
