@@ -2,6 +2,15 @@ version: '3'
 
 services:
 
+  gearpump-master:
+    hostname: gearpump-master
+    image: garugaru/gearpump
+    entrypoint: ./entrypoint.sh
+    command: ./bin/master -ip gearpump-master -port 3000
+    environment:
+        - MASTERS=["gearpump-master:3000"]
+        - HOSTNAME=gearpump-master    
+
   gearpump-ui:
     image: garugaru/gearpump
     entrypoint: ./entrypoint.sh
@@ -11,15 +20,8 @@ services:
         - HOSTNAME=gearpump-master
     ports:
       - "8090:8090"
-
-  gearpump-master:
-    hostname: gearpump-master
-    image: garugaru/gearpump
-    entrypoint: ./entrypoint.sh
-    command: ./bin/master -ip gearpump-master -port 3000
-    environment:
-        - MASTERS=["gearpump-master:3000"]
-        - HOSTNAME=gearpump-master
+    depends_on:
+        - gearpump-master
 
   gearpump-worker:
     hostname: gearpump-worker-{{.Node}}
@@ -29,3 +31,8 @@ services:
     environment:
         - MASTERS=["gearpump-master:3000"]
         - HOSTNAME=gearpump-master
+    depends_on:
+        - gearpump-master
+        - gearpump-ui
+
+ 
