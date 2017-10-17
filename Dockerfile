@@ -2,7 +2,6 @@ FROM openjdk:8-jdk-alpine
 
 ENV WORKER_SLOTS=1000
 ENV MASTERS=["127.0.0.1:3000"]
-ENV HOSTNAME=localhost 
 
 RUN apk update
 RUN apk add curl 
