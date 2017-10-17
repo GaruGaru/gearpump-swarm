@@ -3,7 +3,7 @@ version: '3'
 services:
 
   gearpump-ui:
-    build: .
+    image: garugaru/gearpump
     entrypoint: ./entrypoint.sh
     command: ./bin/services
     environment:
@@ -14,7 +14,7 @@ services:
 
   gearpump-master:
     hostname: gearpump-master
-    build: .
+    image: garugaru/gearpump
     entrypoint: ./entrypoint.sh
     command: ./bin/master -ip gearpump-master -port 3000
     environment:
@@ -24,7 +24,7 @@ services:
   gearpump-worker:
     hostname: gearpump-worker-{{.Node}}
     entrypoint: ./entrypoint.sh
-    build: .
+    image: garugaru/gearpump
     command: ./bin/worker 
     environment:
         - MASTERS=["gearpump-master:3000"]
