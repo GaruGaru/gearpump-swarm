@@ -1,0 +1,15 @@
+version: '1.0'
+steps:
+
+  build_image:
+    type: build
+    description: Image build
+    image_name: garugaru/gearpump
+    tag: ${{CF_SHORT_REVISION}}
+
+  push_image:
+    type: push
+    title: Image push
+    candidate: ${{build_image}}
+    tag: ${{CF_SHORT_REVISION}} 
+    fail_fast: false
