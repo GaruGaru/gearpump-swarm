@@ -1,10 +1,10 @@
 # Run & Scale Apache Gearpump on a docker swarm cluster
 
-Apache Gearpump
+**Apache Gearpump**
 
 	Apache Gearpump is a lightweight real-time big data streaming engine
 	
-Docker Swarm
+**Docker Swarm**
 
 	Docker Swarm is a clustering and scheduling tool for Docker containers
 
@@ -36,6 +36,7 @@ The current setup is able to reach **200.000+ msg/sec** with the base example ap
 	
 
 ### Example docker swarm stack
+
 
 	version: '3'
 
