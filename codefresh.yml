@@ -11,5 +11,7 @@ steps:
     type: push
     title: Image push
     candidate: ${{build_image}}
-    tag: ${{CF_SHORT_REVISION}} 
+    tags:
+        - latest
+        - ${{CF_SHORT_REVISION}} 
     fail_fast: false
