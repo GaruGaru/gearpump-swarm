@@ -1,5 +1,7 @@
 # Run & Scale Apache Gearpump on a docker swarm cluster
 
+[![Codefresh build status]( https://g.codefresh.io/api/badges/build?repoOwner=GaruGaru&repoName=gearpump-swarm&branch=master&pipelineName=gearpump-swarm&accountName=garugaru&type=cf-1)]( https://g.codefresh.io/repositories/GaruGaru/gearpump-swarm/builds?filter=trigger:build;branch:master;service:59e5b94a3523010001347f4a~gearpump-swarm)
+
 **Apache Gearpump**
 
 	Apache Gearpump is a lightweight real-time big data streaming engine
