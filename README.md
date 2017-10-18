@@ -1,8 +1,6 @@
 # Run & Scale Apache Gearpump on a docker swarm cluster
 
 [![Codefresh build status]( https://g.codefresh.io/api/badges/build?repoOwner=GaruGaru&repoName=gearpump-swarm&branch=master&pipelineName=gearpump-swarm&accountName=garugaru&type=cf-1)]( https://g.codefresh.io/repositories/GaruGaru/gearpump-swarm/builds?filter=trigger:build;branch:master;service:59e5b94a3523010001347f4a~gearpump-swarm)
-
-[![Docker Pulls](https://img.shields.io/docker/pulls/mashape/kong.svg)](https://hub.docker.com/r/garugaru/gearpump/)
 [![Docker Stars](https://img.shields.io/docker/stars/garugaru/gearpump.svg)]()
 [![Docker Pulls](https://img.shields.io/docker/pulls/garugaru/gearpump.svg)]()
 
