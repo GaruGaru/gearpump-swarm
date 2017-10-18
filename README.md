@@ -12,7 +12,7 @@ Docker Swarm
 
 ### Deploy gearpump cluster master + 3 workers + ui
 
-	docker stack deploy -c docker-compose.yml 
+	docker stack deploy -c docker-compose.yml gearpump
 
 #### Web UI
 
@@ -23,6 +23,12 @@ Docker Swarm
 In order to submit a new application you can use the web ui or mount a volume on the master container and use the deploy command:
 
 	bin/gear app -jar applications/your-app.jar your.main.class 
+
+#### Scaling Workers
+
+To scale your workers just use the docker-swarm command, new workers will be automatically configured and registered on the cluster
+
+	 docker service scale gearpump_gearpump-worker=<Workers> 
 	
 ### Performances
 
